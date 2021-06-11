@@ -16,6 +16,7 @@ const PaymentsInfoCard = ({ paymentsData }) => {
         <h5
           className="card-title text-center"
           onClick={() => setShowPayeeInfo(true)}
+          id="click-me"
         >
           {Payee.Name}
         </h5>
@@ -29,7 +30,10 @@ const PaymentsInfoCard = ({ paymentsData }) => {
         >
           <div className="card-body">
             <div className="card text-center">
-              <div className="card-header" style={{ border: "none" }}>
+              <div
+                className="card-header"
+                style={{ border: "none", backgroundColor: "transparent" }}
+              >
                 <p className="card-text">{Payee.Attention}</p>
               </div>
               <p>Phone: {Payee.Phone} </p>
@@ -44,32 +48,33 @@ const PaymentsInfoCard = ({ paymentsData }) => {
                 </li>
               </ul>
             </div>
-            <h5
-              className="card-title text-center"
-              onClick={() => setShowPayeeInfo(false)}
-            >
-              Hide Info
-            </h5>
-
-            <h5
-              className="text-center"
-              onClick={() => setshowRemittances(true)}
-            >
-              Show Remittances
-            </h5>
+            <div className="hide-info-container">
+              <i
+                class="chevron-close fas fa-chevron-up"
+                onClick={() => setShowPayeeInfo(false)}
+              ></i>
+            </div>
+            <div>
+              <h5
+                className="show-remittances text-center"
+                onClick={() => setshowRemittances(true)}
+              >
+                Show Remittances
+              </h5>
+            </div>
           </div>
         </CSSTransition>
         {Remittance.map((rmitItem, index) => {
           return (
-            <div className="card-group">
-              <div className="card" style={{ width: "100%" }}>
-                <CSSTransition
-                  in={showRemittances}
-                  timeout={200}
-                  classNames="slide-in-left"
-                  mountOnEnter
-                  unmountOnExit
-                >
+            <CSSTransition
+              in={showRemittances}
+              timeout={200}
+              classNames="slide-in-left"
+              mountOnEnter
+              unmountOnExit
+            >
+              <div className="card-group">
+                <div className="card" style={{ width: "100%" }}>
                   <div className="card-body text-center">
                     <p className="card-text">
                       Payor Name: {rmitItem.PayorName}
@@ -79,26 +84,34 @@ const PaymentsInfoCard = ({ paymentsData }) => {
                     <p className="card-text">
                       Amount Paid: <em>{rmitItem.Amount}</em>
                     </p>
-                    <div>
-                      <h5
-                        style={{ textAlign: "center" }}
-                        onClick={() => setshowRemittances(false)}
-                      >
-                        Hide Remittances
-                      </h5>
-                    </div>
                   </div>
-                </CSSTransition>
+                </div>
               </div>
-            </div>
+            </CSSTransition>
           );
         })}
-
-        <div className="card-footer text-muted text-center">
-          <p className="card-text">CVV: {payee.Payment.CVV}</p>
-          <p className="card-text">PAN: {payee.Payment.PAN}</p>
-          <p className="card-text">Exp: {payee.Payment.Exp}</p>
-        </div>
+        <CSSTransition
+          in={showRemittances}
+          timeout={200}
+          classNames="slide-in-left"
+          mountOnEnter
+          unmountOnExit
+        >
+          <div className="card-footer text-muted text-center">
+            <p className="card-text">CVV: {payee.Payment.CVV}</p>
+            <p className="card-text">PAN: {payee.Payment.PAN}</p>
+            <p className="card-text">Exp: {payee.Payment.Exp}</p>
+            <div className="hide-remittances-button-container">
+              <h5
+                className="hide-remittances-button"
+                style={{ textAlign: "center" }}
+                onClick={() => setshowRemittances(false)}
+              >
+                Hide Remittances
+              </h5>
+            </div>
+          </div>
+        </CSSTransition>
       </div>
     );
   });

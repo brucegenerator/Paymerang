@@ -1,10 +1,51 @@
 
 .card {
-  margin-bottom: 4rem;
+  margin-top: 4rem;
   border: none;
+  text-align: center;
+
 }
-.card-title a:hover,
-.card-title a:active {
-  background: #ffd900;
-  color: purple;
+.card-title {
+  cursor: pointer;
+  display: inherit;
+  margin: 0 auto;
+  
+}
+
+.card-title:hover {
+  background-color: black;
+  color: white;
+}
+
+.show-remittances {
+  display: inline;
+  position: relative;
+  cursor: pointer;
+  /* margin: 0 auto; */
+}
+
+.show-remittances:hover {
+  background-color: black;
+  color: white;
+}
+
+.hide-remittances-button-container {
+  text-align: center;
+}
+
+.hide-remittances-button {
+  display: inline;
+  /* position: relative; */
+  cursor: pointer;
+  margin: 0 auto;
+}
+.hide-remittances-button:hover {
+  background-color: black;
+  color: white;
+}
+.chevron-close {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  padding: 1rem;
 }
