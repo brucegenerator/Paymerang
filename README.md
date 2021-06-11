@@ -12,5 +12,6 @@
 -  http://reactcommunity.org/react-transition-group/css-transition#CSSTransition-prop-onEnter super cool component library I started using for modals and sidedrawers a couple weeks ago.
 -  https://mdbootstrap.com/ haven't touched bootstrap in a long time so I thought I'd give it a whirl.
 -  https://stackoverflow.com/questions/40232847/how-to-implement-pagination-in-reactjs found a simple todo code snippet and I converted the basic principals of class based component state to react hooks state
--  ```  const [checked, setChecked] = useState(false);
-  const toggleChecked = () => setChecked(value => !value); ``` glad i found this code snippet on stackoverflow and was able to implement it as a boolean check on the state of my shown and hidden content since i was initially using two different methods to handle the state and that also led to some of the aforementioned touchiness of CSSTransition not liking all the nested state updates causing infinite loops. 
+-  
+-  ```const toggleChecked = () => setChecked(value => !value);```
+- glad i found this code snippet on stackoverflow and was able to implement it as a boolean check on the state of my shown and hidden content since i was initially using two different methods to handle the state and that also led to some of the aforementioned touchiness of CSSTransition not liking all the nested state updates causing infinite loops. 
