@@ -8,6 +8,8 @@ const PaymentsInfoCard = ({ paymentsData }) => {
   const [showPayeeInfo, setShowPayeeInfo] = useState(false);
   const [showRemittances, setshowRemittances] = useState(false);
 
+  const toggleShowPayeeInfo = () => setShowPayeeInfo((value) => !value);
+
   return paymentsData.map((payee, index) => {
     const { Payee, Remittance } = payee;
     // console.log(Payee.Name);
@@ -15,12 +17,15 @@ const PaymentsInfoCard = ({ paymentsData }) => {
       <div className="card" style={{ width: "100%" }}>
         <h5
           className="card-title text-center"
-          onClick={() => setShowPayeeInfo(true)}
+          onClick={() => setShowPayeeInfo((value) => !value)}
           id="click-me"
         >
           {Payee.Name}
         </h5>
-
+        <i
+          class="chevron-close fas fa-chevron-up"
+          onClick={() => setShowPayeeInfo((value) => !value)}
+        ></i>
         <CSSTransition
           in={showPayeeInfo}
           timeout={200}
@@ -48,16 +53,11 @@ const PaymentsInfoCard = ({ paymentsData }) => {
                 </li>
               </ul>
             </div>
-            <div className="hide-info-container">
-              <i
-                class="chevron-close fas fa-chevron-up"
-                onClick={() => setShowPayeeInfo(false)}
-              ></i>
-            </div>
+            <div className="hide-info-container"></div>
             <div>
               <h5
                 className="show-remittances text-center"
-                onClick={() => setshowRemittances(true)}
+                onClick={() => setshowRemittances((value) => !value)}
               >
                 Show Remittances
               </h5>
@@ -101,15 +101,6 @@ const PaymentsInfoCard = ({ paymentsData }) => {
             <p className="card-text">CVV: {payee.Payment.CVV}</p>
             <p className="card-text">PAN: {payee.Payment.PAN}</p>
             <p className="card-text">Exp: {payee.Payment.Exp}</p>
-            <div className="hide-remittances-button-container">
-              <h5
-                className="hide-remittances-button"
-                style={{ textAlign: "center" }}
-                onClick={() => setshowRemittances(false)}
-              >
-                Hide Remittances
-              </h5>
-            </div>
           </div>
         </CSSTransition>
       </div>
