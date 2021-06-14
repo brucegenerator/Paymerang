@@ -8,8 +8,6 @@ const PaymentsInfoCard = ({ paymentsData }) => {
   const [showPayeeInfo, setShowPayeeInfo] = useState(false);
   const [showRemittances, setshowRemittances] = useState(false);
 
-  const toggleShowPayeeInfo = () => setShowPayeeInfo((value) => !value);
-
   return paymentsData.map((payee, index) => {
     const { Payee, Remittance } = payee;
     // console.log(Payee.Name);
@@ -78,6 +76,9 @@ const PaymentsInfoCard = ({ paymentsData }) => {
                   <div className="card-body text-center">
                     <p className="card-text">
                       Payor Name: {rmitItem.PayorName}
+                    </p>
+                    <p className="card-text">
+                      Payor ID: {rmitItem.PayorId}
                     </p>
                     <p>Invoice Number:{rmitItem.InvoiceNo}</p>
                     <p className="card-text">{rmitItem.Description}</p>
